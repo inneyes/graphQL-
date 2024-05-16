@@ -1,0 +1,444 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema#",
+    "definitions": {
+        "Email": {
+            "type": "object",
+            "properties": {}
+        },
+        "Allowances": {
+            "type": "object",
+            "properties": {}
+        },
+        "Tax": {
+            "type": "object",
+            "required": [
+                "Code",
+                "Rate",
+                "Amount"
+            ],
+            "properties": {
+                "Code": {"type": "string"},
+                "Rate": {"type": "number"},
+                "Amount": {"type": "number"}
+            }
+        },
+        "Manager": {
+            "type": "object",
+            "properties": {}
+        },
+        "OldPrice": {
+            "type": "object",
+            "properties": {}
+        },
+        "NewPrice": {
+            "type": "object",
+            "properties": {}
+        },
+        "Item": {
+            "type": "object",
+            "required": [
+                "No",
+                "Id",
+                "Name",
+                "Description",
+                "Quantity",
+                "Unit",
+                "OldPrice",
+                "NewPrice",
+                "Price",
+                "Allowances",
+                "Amount",
+                "Tax",
+                "TaxAmount",
+                "Total"
+            ],
+            "properties": {
+                "No": {"type": "string"},
+                "Id": {"type": "integer"},
+                "Name": {"type": "string"},
+                "Description": {"type": "string"},
+                "Quantity": {"type": "integer"},
+                "Unit": {"type": "string"},
+                "OldPrice": {"$ref": "#/definitions/OldPrice"},
+                "NewPrice": {"$ref": "#/definitions/NewPrice"},
+                "Price": {"type": "number"},
+                "Allowances": {"$ref": "#/definitions/Allowances"},
+                "Amount": {"type": "number"},
+                "Tax": {"$ref": "#/definitions/Tax"},
+                "TaxAmount": {"type": "number"},
+                "Total": {"type": "number"}
+            }
+        },
+        "Department": {
+            "type": "object",
+            "properties": {}
+        },
+        "Settings": {
+            "type": "object",
+            "required": [
+                "TaxInclusive",
+                "InlineTax",
+                "InlineAllowance",
+                "CumulativeAllowance"
+            ],
+            "properties": {
+                "TaxInclusive": {"type": "boolean"},
+                "InlineTax": {"type": "boolean"},
+                "InlineAllowance": {"type": "boolean"},
+                "CumulativeAllowance": {"type": "boolean"}
+            }
+        },
+        "LineItems": {
+            "type": "object",
+            "required": ["Item"],
+            "properties": {
+                "Item": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Item"},
+                    "minItems": 1
+                }
+            }
+        },
+        "Position": {
+            "type": "object",
+            "properties": {}
+        },
+        "Taxes": {
+            "type": "object",
+            "required": ["Tax"],
+            "properties": {
+                "Tax": {"$ref": "#/definitions/Tax"}
+            }
+        },
+        "Line4": {
+            "type": "object",
+            "properties": {}
+        },
+        "BuildingName": {
+            "type": "object",
+            "properties": {}
+        },
+        "TaxIDType": {
+            "type": "object",
+            "properties": {}
+        },
+        "Line1": {
+            "type": "object",
+            "properties": {}
+        },
+        "Line2": {
+            "type": "object",
+            "properties": {}
+        },
+        "Line3": {
+            "type": "object",
+            "properties": {}
+        },
+        "Fax": {
+            "type": "object",
+            "properties": {}
+        },
+        "Buyer": {
+            "type": "object",
+            "required": [
+                "ID",
+                "Name",
+                "TaxID",
+                "TaxIDType",
+                "Branch",
+                "BuildingNo",
+                "BuildingName",
+                "Street",
+                "Line1",
+                "Line2",
+                "Line3",
+                "Line4",
+                "District",
+                "City",
+                "Province",
+                "PostalCode",
+                "CountryCode",
+                "CountryName",
+                "Telephone",
+                "Fax",
+                "Contact",
+                "Department",
+                "Email"
+            ],
+            "properties": {
+                "ID": {"type": "string"},
+                "Name": {"type": "string"},
+                "TaxID": {"type": "string"},
+                "TaxIDType": {"$ref": "#/definitions/TaxIDType"},
+                "Branch": {"type": "string"},
+                "BuildingNo": {"type": "integer"},
+                "BuildingName": {"$ref": "#/definitions/BuildingName"},
+                "Street": {"type": "string"},
+                "Line1": {"$ref": "#/definitions/Line1"},
+                "Line2": {"$ref": "#/definitions/Line2"},
+                "Line3": {"$ref": "#/definitions/Line3"},
+                "Line4": {"$ref": "#/definitions/Line4"},
+                "District": {"type": "string"},
+                "City": {"type": "string"},
+                "Province": {"type": "string"},
+                "PostalCode": {"type": "integer"},
+                "CountryCode": {"type": "string"},
+                "CountryName": {"type": "string"},
+                "Telephone": {"type": "string"},
+                "Fax": {"$ref": "#/definitions/Fax"},
+                "Contact": {"type": "string"},
+                "Department": {"$ref": "#/definitions/Department"},
+                "Email": {"$ref": "#/definitions/Email"}
+            }
+        },
+        "DueDate": {
+            "type": "object",
+            "properties": {}
+        },
+        "Seller": {
+            "type": "object",
+            "required": [
+                "ID",
+                "Name",
+                "TaxID",
+                "TaxIDType",
+                "Branch",
+                "BuildingNo",
+                "BuildingName",
+                "Street",
+                "Line1",
+                "Line2",
+                "Line3",
+                "Line4",
+                "District",
+                "City",
+                "Province",
+                "PostalCode",
+                "CountryCode",
+                "CountryName",
+                "Telephone",
+                "Fax",
+                "Contact",
+                "Department",
+                "Email"
+            ],
+            "properties": {
+                "ID": {"type": "string"},
+                "Name": {"type": "string"},
+                "TaxID": {"type": "string"},
+                "TaxIDType": {"$ref": "#/definitions/TaxIDType"},
+                "Branch": {"type": "string"},
+                "BuildingNo": {"type": "integer"},
+                "BuildingName": {"$ref": "#/definitions/BuildingName"},
+                "Street": {"type": "string"},
+                "Line1": {"$ref": "#/definitions/Line1"},
+                "Line2": {"$ref": "#/definitions/Line2"},
+                "Line3": {"$ref": "#/definitions/Line3"},
+                "Line4": {"$ref": "#/definitions/Line4"},
+                "District": {"type": "string"},
+                "City": {"type": "string"},
+                "Province": {"type": "string"},
+                "PostalCode": {"type": "integer"},
+                "CountryCode": {"type": "string"},
+                "CountryName": {"type": "string"},
+                "Telephone": {"type": "string"},
+                "Fax": {"$ref": "#/definitions/Fax"},
+                "Contact": {"type": "string"},
+                "Department": {"$ref": "#/definitions/Department"},
+                "Email": {"$ref": "#/definitions/Email"}
+            }
+        },
+        "Reference": {
+            "type": "object",
+            "required": [
+                "TypeCode",
+                "No",
+                "Date"
+            ],
+            "properties": {
+                "TypeCode": {"type": "string"},
+                "No": {"type": "string"},
+                "Date": {"type": "string"}
+            }
+        },
+        "References": {
+            "type": "object",
+            "required": ["Reference"],
+            "properties": {
+                "Reference": {"$ref": "#/definitions/Reference"}
+            }
+        },
+        "Data": {
+            "type": "object",
+            "required": [
+                "Label",
+                "Amount"
+            ],
+            "properties": {
+                "Label": {"type": "string"},
+                "Amount": {"type": "number"}
+            }
+        },
+        "Summary": {
+            "type": "object",
+            "required": ["Data"],
+            "properties": {
+                "Data": {
+                    "type": "array",
+                    "items": {"$ref": "#/definitions/Data"},
+                    "minItems": 1
+                }
+            }
+        },
+        "GetInvoice": {
+            "type": "object",
+            "required": [
+                "TypeCode",
+                "TypeNameTh",
+                "TypeNameEn",
+                "No",
+                "Date",
+                "Seller",
+                "Buyer",
+                "DueDate",
+                "PurposeCode",
+                "Purpose",
+                "References",
+                "OriginalAmount",
+                "CorrectAmount",
+                "DifferenceAmount",
+                "CurrencyCode",
+                "Currency",
+                "LineItems",
+                "TotalQuantity",
+                "Quantity",
+                "Amount",
+                "ChargeTotal",
+                "AllowanceTotal",
+                "TaxBasisAmount",
+                "NonVat",
+                "TaxAmount",
+                "Taxes",
+                "Total",
+                "Summary",
+                "TotalEn",
+                "TotalTh",
+                "Settings",
+                "Manager",
+                "Position"
+            ],
+            "properties": {
+                "TypeCode": {"type": "string"},
+                "TypeNameTh": {"type": "string"},
+                "TypeNameEn": {"type": "string"},
+                "No": {"type": "string"},
+                "Date": {"type": "string"},
+                "Seller": {"$ref": "#/definitions/Seller"},
+                "Buyer": {"$ref": "#/definitions/Buyer"},
+                "DueDate": {"$ref": "#/definitions/DueDate"},
+                "PurposeCode": {"type": "string"},
+                "Purpose": {"type": "string"},
+                "References": {"$ref": "#/definitions/References"},
+                "OriginalAmount": {"type": "number"},
+                "CorrectAmount": {"type": "number"},
+                "DifferenceAmount": {"type": "number"},
+                "CurrencyCode": {"type": "string"},
+                "Currency": {"type": "string"},
+                "LineItems": {"$ref": "#/definitions/LineItems"},
+                "TotalQuantity": {"type": "integer"},
+                "Quantity": {"type": "integer"},
+                "Amount": {"type": "number"},
+                "ChargeTotal": {"type": "number"},
+                "AllowanceTotal": {"type": "number"},
+                "TaxBasisAmount": {"type": "number"},
+                "NonVat": {"type": "number"},
+                "TaxAmount": {"type": "number"},
+                "Taxes": {"$ref": "#/definitions/Taxes"},
+                "Total": {"type": "number"},
+                "Summary": {"$ref": "#/definitions/Summary"},
+                "TotalEn": {"type": "string"},
+                "TotalTh": {"type": "string"},
+                "Settings": {"$ref": "#/definitions/Settings"},
+                "Manager": {"$ref": "#/definitions/Manager"},
+                "Position": {"$ref": "#/definitions/Position"}
+            }
+        }
+    },
+    "properties": {
+        "Email": {"$ref": "#/definitions/Email"},
+        "Allowances": {"$ref": "#/definitions/Allowances"},
+        "Tax": {"$ref": "#/definitions/Tax"},
+        "Manager": {"$ref": "#/definitions/Manager"},
+        "Item": {"$ref": "#/definitions/Item"},
+        "OldPrice": {"$ref": "#/definitions/OldPrice"},
+        "NewPrice": {"$ref": "#/definitions/NewPrice"},
+        "Department": {"$ref": "#/definitions/Department"},
+        "Settings": {"$ref": "#/definitions/Settings"},
+        "LineItems": {"$ref": "#/definitions/LineItems"},
+        "Position": {"$ref": "#/definitions/Position"},
+        "Taxes": {"$ref": "#/definitions/Taxes"},
+        "Line4": {"$ref": "#/definitions/Line4"},
+        "BuildingName": {"$ref": "#/definitions/BuildingName"},
+        "Buyer": {"$ref": "#/definitions/Buyer"},
+        "TaxIDType": {"$ref": "#/definitions/TaxIDType"},
+        "Line1": {"$ref": "#/definitions/Line1"},
+        "Line2": {"$ref": "#/definitions/Line2"},
+        "Line3": {"$ref": "#/definitions/Line3"},
+        "Fax": {"$ref": "#/definitions/Fax"},
+        "DueDate": {"$ref": "#/definitions/DueDate"},
+        "GetInvoice": {"$ref": "#/definitions/GetInvoice"},
+        "Seller": {"$ref": "#/definitions/Seller"},
+        "References": {"$ref": "#/definitions/References"},
+        "Reference": {"$ref": "#/definitions/Reference"},
+        "Summary": {"$ref": "#/definitions/Summary"},
+        "Data": {"$ref": "#/definitions/Data"},
+        "Label": {"type": "string"},
+        "Code": {"type": "string"},
+        "Rate": {"type": "number"},
+        "Amount": {"type": "number"},
+        "TaxBasisAmount": {"type": "number"},
+        "Unit": {"type": "string"},
+        "Name": {"type": "string"},
+        "CurrencyCode": {"type": "string"},
+        "No": {"type": "string"},
+        "Id": {"type": "integer"},
+        "Description": {"type": "string"},
+        "Quantity": {"type": "integer"},
+        "Price": {"type": "number"},
+        "TaxAmount": {"type": "number"},
+        "Total": {"type": "number"},
+        "Currency": {"type": "string"},
+        "AllowanceTotal": {"type": "number"},
+        "Street": {"type": "string"},
+        "ID": {"type": "string"},
+        "TaxInclusive": {"type": "boolean"},
+        "InlineTax": {"type": "boolean"},
+        "InlineAllowance": {"type": "boolean"},
+        "CumulativeAllowance": {"type": "boolean"},
+        "CorrectAmount": {"type": "number"},
+        "TaxID": {"type": "string"},
+        "City": {"type": "string"},
+        "Province": {"type": "string"},
+        "TypeNameTh": {"type": "string"},
+        "DifferenceAmount": {"type": "number"},
+        "TotalTh": {"type": "string"},
+        "District": {"type": "string"},
+        "Telephone": {"type": "string"},
+        "CountryName": {"type": "string"},
+        "PostalCode": {"type": "integer"},
+        "Branch": {"type": "string"},
+        "BuildingNo": {"type": "integer"},
+        "CountryCode": {"type": "string"},
+        "Contact": {"type": "string"},
+        "PurposeCode": {"type": "string"},
+        "TotalQuantity": {"type": "integer"},
+        "NonVat": {"type": "number"},
+        "TypeNameEn": {"type": "string"},
+        "TypeCode": {"type": "string"},
+        "Date": {"type": "string"},
+        "Purpose": {"type": "string"},
+        "OriginalAmount": {"type": "number"},
+        "ChargeTotal": {"type": "number"},
+        "TotalEn": {"type": "string"}
+    }
+}
