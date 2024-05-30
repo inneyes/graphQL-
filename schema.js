@@ -120,9 +120,9 @@ const typeDefs = gql `
   type Query {
     getPO: PO
     getDeliveryOrder: DeliveryOrder
-    getCreditNotes: [CreditNote]
-    getDebitNotes: [DebitNote]
-    getReceiptTaxInvoices: [ReceiptTaxInvoice]
+    getCreditNotes: CreditNote
+    getDebitNotes: DebitNote
+    getReceiptTaxInvoices: ReceiptTaxInvoice
   }
 `;
 
